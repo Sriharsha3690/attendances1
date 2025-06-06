@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Salary</title></head>
+<body>
+<h2>Edit Salary for {{ employee.name }}</h2>
+<form method="POST">
+    <label>New Salary:</label>
+    <input type="number" name="salary" value="{{ employee.salary }}">
+    <button type="submit">Update</button>
+</form>
+<a href="/">Back</a>
+</body>
+</html>

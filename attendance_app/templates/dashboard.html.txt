@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h2>Attendance Dashboard</h2>
+<canvas id="attendanceChart" width="400" height="200"></canvas>
+<script>
+    const ctx = document.getElementById('attendanceChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ names | safe }},
+            datasets: [{
+                label: 'Present',
+                backgroundColor: 'green',
+                data: {{ presents | safe }}
+            }, {
+                label: 'Absent',
+                backgroundColor: 'red',
+                data: {{ absents | safe }}
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'top' },
+                title: { display: true, text: 'Employee Attendance Overview' }
+            }
+        }
+    });
+</script>
+<a href="/export_dashboard">Export CSV</a> | <a href="/">Back</a>
+</body>
+</html>
